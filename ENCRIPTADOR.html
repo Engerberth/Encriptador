@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Challge ONE Encriptador de Texto</title> 
+        <link rel="stylesheet" href="Estilo.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap" rel="stylesheet">
+    
+    </head>
+    <body>
+        <header>
+            <img class="logo" src="Logo.png" alt="Alura Logo">
+        </header>
+        
+        <main>
+            <section>
+                    <textarea class="escritura" id="escritura" cols="30" rows="10" placeholder="Ingrese el texto aqui"></textarea>
+                    <div>
+                        <h6 class="información">Solo letras minusculas y sin acento</h6>
+                    </div> 
+                    <div class="botones">
+                        <button id="boton1">Encriptar</button>
+                        <button id="boton2">Decencriptar</button>         
+                    </div>          
+            </section>
+
+            <section>
+
+                <div class= "areadeltexto" id="areadeltexto">
+                    <div id="mensajedelencriptador">
+                        
+                        <p><b>No se ha encontrado ningun mensaje</b></p>
+                        <p>Ingrese el texto que desea encriptar o desencriptar</p>
+                        <img class= "muneco" src="Muneco.png" alt="">
+                    </div>
+
+                    <div id=".divmensajeEncriptado">
+                        <p id="mensajeEncriptado"></p>
+                        <button class="Copiar" id="divmensajeEncriptado">Copiar</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <script>
+            var inputR = document.getElementById("escritura")
+            var button1 = document.getElementById("boton1")
+            var button2 = document.getElementById("boton2")
+            var button3 = document.getElementById("divmensajeEncriptado")
+            var mensajeEncriptado = document.getElementById("mensajeEncriptado")
+
+            document.addEventListener("input", function (e){
+                e.target.value = e.target.value.toLowerCase()
+            })
+            
+            button1.addEventListener("click",function(e){
+                var caracteres = new RegExp("^[a-z]+$","i")
+                if(!caracteres.test(inputR.value)) {
+                    alert('Los datos no son válidos')
+                    inputR.value = ""
+                } else {
+                    var encriptar = inputR.value.replaceAll("e","enter").replaceAll("i","ines").replaceAll("a","ai").replaceAll("o","ober").replaceAll("u","ufat")
+                    document.getElementById("mensajedelencriptador").style.display = "none"
+                    mensajeEncriptado.textContent = encriptar 
+                    inputR.value = ""
+                }
+                
+            })
+
+            button3.addEventListener("click",function(e){
+
+                 inputR.value = mensajeEncriptado.textContent
+                 mensajeEncriptado.textContent = ""
+
+            })
+
+            button2.addEventListener("click",function(e){
+                var desencriptar = inputR.value.replaceAll("enter","e").replaceAll("ines","i").replaceAll("ai","a").replaceAll("ober","o").replaceAll("ufat","u")
+                mensajeEncriptado.textContent = desencriptar 
+                inputR.value = ""
+            })
+
+        
+
+
+
+
+        </script>
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+    <footer><p>Autor: Engerberth Roberto Sanchez Yanez</p></footer>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
+
